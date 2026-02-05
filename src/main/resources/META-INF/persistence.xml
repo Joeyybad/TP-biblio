@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="maPU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>fr.epsib3_2526.Livre</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bibliotheque?allowPublicKeyRetrieval=true&amp;useSSL=false" />
+
+            <property name="jakarta.persistence.jdbc.user" value="${env.DB_USER}" />
+            <property name="jakarta.persistence.jdbc.password" value="${env.DB_PASS}" />
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+
+            <property name="jakarta.persistence.schema-generation.database.action" value="update" />
+        </properties>
+    </persistence-unit>
+</persistence>
