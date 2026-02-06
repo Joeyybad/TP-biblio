@@ -7,6 +7,8 @@
     <persistence-unit name="maPU">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>fr.epsib3_2526.Livre</class>
+        <class>fr.epsib3_2526.Client</class>
+        <class>fr.epsib3_2526.Emprunt</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bibliotheque?allowPublicKeyRetrieval=true&amp;useSSL=false" />
