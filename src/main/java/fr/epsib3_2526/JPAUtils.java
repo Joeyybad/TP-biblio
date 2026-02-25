@@ -19,6 +19,9 @@ public class JPAUtils {
         if (user != null) envProps.put("jakarta.persistence.jdbc.user", user);
         if (pass != null) envProps.put("jakarta.persistence.jdbc.password", pass);
 
+        System.out.println("Chemin du fichier : " +
+                Thread.currentThread().getContextClassLoader().getResource("META-INF/persistence.xml"));
+
         return Persistence.createEntityManagerFactory("maPU", envProps);
     }
 }
