@@ -1,13 +1,14 @@
-// Pour éviter de versionner les credentials
-
 package fr.epsib3_2526;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
 
 public class JPAUtils {
+    private static EntityManagerFactory emf = null;
+    
     public static EntityManagerFactory createEntityManagerFactory() {
         Map<String, String> envProps = new HashMap<>();
 
@@ -20,5 +21,18 @@ public class JPAUtils {
         if (pass != null) envProps.put("jakarta.persistence.jdbc.password", pass);
 
         return Persistence.createEntityManagerFactory("maPU", envProps);
+    }
+    
+    public static EntityManager getEntityManager() {
+        if (emf == null) {
+            emf = createEntityManagerFactory();
+        }
+        return emf.createEntityManager();
+    }
+    
+    public static void close() {
+        if (emf != null && emf.isOpen()) {
+            emf.close();
+        }
     }
 }
